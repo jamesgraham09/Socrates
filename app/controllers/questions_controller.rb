@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
 	end
 
 	def index
-		@questions = Question.all
+		@questions = Question.all.order('start_difficulty')
 	end
 
 	def show
