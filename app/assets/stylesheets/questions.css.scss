@@ -1,0 +1,25 @@
+// Place all the styles related to the questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.questions_table {
+	border:1px solid black;
+	width:100%;
+	height:50px;
+	padding:0px
+}
+
+.table_titles {
+	border:1px solid black;
+	background-color:green;
+	text-align:left;
+	color:white;
+	font-size:120%;
+	padding:5px
+}
+
+.table_rows td {
+	padding:5px;
+	background-color:white;
+	border:1px solid black
+}

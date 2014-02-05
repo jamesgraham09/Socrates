@@ -1,0 +1,12 @@
+<%= form_for @question do |q| %>
+	<%= q.label :text %> (Write question as you want to it appear to user)<br>
+	<%= q.text_area :text, size: '50x10' %>
+	<br><br>
+	<%= q.label :answer %> (Will be marked as correct, with all others are incorrect)<br>
+	<%= q.text_area :answer, size: '50x2' %>
+	<br><br>
+	<%= q.label :start_difficulty %> (1 is easiest, 1000 is hardest)<br>
+	<%= q.text_field :start_difficulty, size: '50x2' %>
+	<br><br>
+	<%= q.submit %>
+<% end %>

@@ -1,0 +1,7 @@
+<h1>Question: <%= @question.text %></h1>
+<h3>Answer: <%= @question.answer %></h3>
+<h5>Difficulty: <%= @question.start_difficulty %> / 1000 </h5>
+
+<%= link_to 'Edit this question', edit_question_path %><br>
+<%= link_to 'Delete this question', question_path, method: :delete %><br>
+<%= link_to 'Review all questions', questions_path %>
