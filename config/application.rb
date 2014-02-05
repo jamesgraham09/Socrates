@@ -1,5 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
+# from devise load up if needed ---> config.assets.initialize_on_precompile = false
+
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_record/railtie"
