@@ -1,0 +1,9 @@
+<h3>Your question:</h3> 
+<h1><%= @question.text %></h1>
+
+<%= text_area 'Answer', :answer, size: '50x10' %>
+
+<br>
+
+<%= button_to 'Skip question', new_question_path %>
+
