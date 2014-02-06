@@ -1,6 +1,6 @@
 Log of actions to be implemented
 
-- build basic seed for questions database
+- build basic seed for questions database (CREATED LOW GRADE 500)
 >> start with trivial seed
 >> mess about with difficulty ratings until you get 1,000 decent questions with sensible difficulty ratings
 

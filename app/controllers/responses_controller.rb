@@ -2,7 +2,8 @@ class ResponsesController < ApplicationController
 
 	def new
 		@response = Response.new
-		@question = Question.last
+		# @question = Question.last
+		@question = Question.where(:start_difficulty => (100..999)).sample
 		session[:start_time] = Time.now
 	end
 
@@ -22,19 +23,9 @@ class ResponsesController < ApplicationController
 			else 
 				'incorrect'
 			end
-			
+
 		@response.save
-		redirect_to question_path(@question)
-
-		# @question = Question.find(params[:question_id])
-		# if @response[:answer] == @question.answer
-		# 	@outcome = 'correct'
-		# else
-		# 	@outcome = 'incorrect'
-		# end
-
-		# @response = Response.new(params[:response], question_id: @question.id, user_id: current_user.id, outcome: @outcome, time: 999)
-		# @response.save
+		redirect_to new_response_path
 	end
 
 end
@@ -53,3 +44,5 @@ end
 	# 	@response = Response.new(params[:response], question_id: @question.id, user_id: current_user.id, outcome: @outcome, time: 999)
 	# 	@response.save
 	# end
+
+	# Question.all.select{|key, key[:start_difficulty]| (current_user.rating - key[:start_difficulty]) - 100 < 1000}
