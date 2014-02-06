@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :questions
+  resources :questions do
+    resources :responses
+  end
   resources :responses
 
   root :to => "questions#index"

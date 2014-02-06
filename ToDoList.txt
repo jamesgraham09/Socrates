@@ -1,0 +1,39 @@
+Log of actions to be implemented
+
+- build basic seed for questions database
+>> start with trivial seed
+>> mess about with difficulty ratings until you get 1,000 decent questions with sensible difficulty ratings
+
+- create question selection logic
+>> calculate user rating
+>> calculate question difficulty ratings
+>> avoid repeat questions
+>> get the best difficulty adjusted questions you can
+
+- change 'responses/new' to 'nextquestion' in url
+>> re-label the url's to create sensible routing
+
+- develop template for next question page
+>> install bootstrap
+>> create the column structure
+>> load up the user and question info on page load
+>> do fancy stuff later
+
+- make it cooler with javascripty bits
+>> rolling clock
+>> color change based on right/wrong
+
+
+
+Lessons learnt by doing this
+
+- devise is freaking impressive, especially always knowing who the user is in a helper method!
+
+- Using a central responses table is a good way to go as you can access this from outside
+
+- Controller routing is damn tricky
+>> 'new' loads a new page, but forgets everything when you want to create (save), unless you store it in the url, the session or somewhere else
+>> use the raise 'x' to check out what you are posting in a form
+>> params hash is just whatever input the post request is creating
+>> access nested hashes with the right syntax, eg params[:response][:answer]
+>> define stuff in the session by adding it as a hash, ie... session[:start_time] = Time.now
