@@ -18,5 +18,5 @@ end
 
 500.times do
 	generate_question((11..99),(11..99))
-	Question.create(text: @question_text, answer: @answer_text, start_difficulty: @question_start_difficulty)
+	Question.create(text: @question_text, answer: @question_answer, start_difficulty: @question_start_difficulty)
 end
