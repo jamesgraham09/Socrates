@@ -16,6 +16,7 @@
 	  	Logged in as: <%=current_user.email%>
 	  	 // 
 	  	<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+	  	<%= current_user.get_rating %>
 	  <% else %>
 	  	<%= link_to 'Sign up', new_user_registration_path %>
 	  	 // 

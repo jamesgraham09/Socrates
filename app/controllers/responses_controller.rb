@@ -3,7 +3,7 @@ class ResponsesController < ApplicationController
 	def new
 		@response = Response.new
 		# @question = Question.last
-		@question = Question.where(:start_difficulty => (100..999)).sample
+		@question = Question.where(:start_difficulty => ((current_user.get_rating - 200)..999)).sample
 		session[:start_time] = Time.now
 	end
 
