@@ -37,3 +37,11 @@ Lessons learnt by doing this
 >> params hash is just whatever input the post request is creating
 >> access nested hashes with the right syntax, eg params[:response][:answer]
 >> define stuff in the session by adding it as a hash, ie... session[:start_time] = Time.now
+
+- Establishing hierarchy
+>> getting the resources right enables a bunch of awesome helper methods, eg responses.each (instead of trying to peer into the relevant hash)
+>> enables you to work through the class hierarchy, in this case using response.outcome and then response.question.starting_difficulty
+
+- Testing tricky formulae
+>> Use the console as a testing vehicle
+>> run the method on a specific class and follow through the stack trace
