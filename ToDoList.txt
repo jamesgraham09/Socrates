@@ -5,7 +5,7 @@ Log of actions to be implemented
 >> mess about with difficulty ratings until you get 1,000 decent questions with sensible difficulty ratings
 
 - create question selection logic
->> calculate user rating
+>> calculate user rating (CREATE BASIC)
 >> calculate question difficulty ratings
 >> avoid repeat questions
 >> get the best difficulty adjusted questions you can
@@ -45,3 +45,10 @@ Lessons learnt by doing this
 - Testing tricky formulae
 >> Use the console as a testing vehicle
 >> run the method on a specific class and follow through the stack trace
+
+- How to use git effectively
+>> think about a horizontal time path and a vertical version path
+>> working on your own pre-launch, there is only really a time path!
+>> for a new branch, use git branch XX, and then git checkout XX, and then git merge ...
+>> use git checkout (tag) to look at  other instances in this or other branches
+>> use git reset --hard --head to go back to last save (or tag to go back to specific one, but be careful!)

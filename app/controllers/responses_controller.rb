@@ -3,19 +3,24 @@ class ResponsesController < ApplicationController
 	def new
 		@response = Response.new
 		# @question = Question.last
-		@question = Question.where(:start_difficulty => ((current_user.get_rating - 200)..999)).sample
+		@question = 
+			if user_signed_in?
+				Question.where(:start_difficulty => ((current_user.get_rating - 200)..999)).sample
+			else 
+				Question.where(:start_difficulty => (200..300)).sample
+			end
 		session[:start_time] = Time.now
 	end
 
 	def create
 		@question = Question.find(params[:question_id])
-		@start_time = session[:start_time]
-		@end_time = Time.now
+		start_time = session[:start_time]
+		end_time = Time.now
 		@response = Response.new
 		@response.user_id = current_user.id
 		@response.question_id = @question.id
 		
-		@response.time = (1000*(@end_time - @start_time)).to_i
+		@response.time = (1000*(end_time - start_time)).to_i
 
 		@response.outcome = 
 			if params[:response][:answer] == @question.answer
