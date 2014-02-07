@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :responses
   end
   resources :responses
-
+  
   root :to => "welcome#index"
 
   get 'next_question' => "responses#new"

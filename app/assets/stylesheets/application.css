@@ -24,6 +24,9 @@ html {
 	color:red;
 }
 
+a {
+	color:red;
+}
 
 .nav_bar {
 	background-color: black;
@@ -35,7 +38,7 @@ html {
 	border: 3px solid red;
 }
 
-.nav_link {
+.nav_bar a {
 	color:red;
 }
 .seconds {

@@ -9,24 +9,11 @@
 </head>
 <body>
   <div class="row nav_bar">
-	  <div class="col-md-3">Welcome</div>
-	  <div class="col-md-3"><%= link_to 'Next Question', new_response_path, class: "nav_link" %></div>
-	  <div class="col-md-3"><%= link_to 'All Questions', questions_path, class: 'nav_link'%> </div>
-	  <div class="col-md-3">About</div>
+	  <div class="col-md-4"><%= link_to 'Welcome', '/' %></div>
+	  <div class="col-md-4"><%= link_to 'Next Question', new_response_path %></div>
+	  <div class="col-md-4"><%= link_to 'All Questions', questions_path %> </div>
   </div>
 
-<!--   <p>
-	  <% if user_signed_in? %>
-	  	Logged in as: <%=current_user.email%>
-	  	 // 
-	  	<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-	  	<%= current_user.get_rating %>
-	  <% else %>
-	  	<%= link_to 'Sign up', new_user_registration_path %>
-	  	 // 
-	  	<%= link_to 'Sign in', new_user_session_path %>
-	  <% end %>
-  </p> -->
 
 
 <%= yield %>
@@ -35,6 +22,20 @@
 	  <div class="col-md-6" style="text-align:center"></div>
 	  <div class="col-md-6" style="text-align:right">copyright Project Socrates 2014</div>
   </div>
+
+
+   <p style="text-align:center">
+	  <% if user_signed_in? %>
+	  	Logged in as: <%=current_user.email%>
+	  	 // 
+	  	<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+	  <% else %>
+	  	<%= link_to 'Sign up', new_user_registration_path %>
+	  	 // 
+	  	<%= link_to 'Sign in', new_user_session_path %>
+	  <% end %>
+  </p> 
+
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>

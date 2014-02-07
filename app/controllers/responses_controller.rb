@@ -1,17 +1,26 @@
 class ResponsesController < ApplicationController
 
 	def new
-		@response = Response.new
-		# @question = Question.last
-		@question = 
-			if user_signed_in?
-				Question.where(:start_difficulty => ((current_user.get_rating - 200)..999)).sample
-			else 
-				Question.where(:start_difficulty => (200..300)).sample
-			end
-		session[:start_time] = Time.now
-		@last_response = current_user.responses.last
-		@last_question = @last_response.question
+		if user_signed_in?
+			@response = Response.new
+			# @question = Question.last
+			@question = 
+				if user_signed_in?
+					Question.where(:start_difficulty => ((current_user.get_rating - 200)..999)).sample
+				else 
+					Question.where(:start_difficulty => (200..300)).sample
+				end
+			session[:start_time] = Time.now
+			@last_response = current_user.responses.last
+			@last_question = 
+				if @last_response == nil
+					nil
+				else
+					@last_response.question
+				end
+		else 
+			redirect_to new_user_registration_path
+		end
 	end
 
 	def create

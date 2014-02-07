@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 	  		end
 	  	end
 	  	
-	  	puts correct_difficulties.inspect
+	  	return 200 if correct_difficulties.none?
 	  	correct_difficulties.inject{ |sum, el| sum + el }.to_f / correct_difficulties.size
 	  end
 
