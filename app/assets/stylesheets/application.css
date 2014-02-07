@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+
+html {
+	padding-left:25px;
+	font-family:Lucida Console;
+	max-width: 600px;
+}
+
+.seconds {
+	color:red;
+	background: white;
+	font-size:110%;
+	width:50%;
+/*	border-left:solid black 3px;
+	border-top:solid black 3px;
+	border-bottom: solid black 3px;*/
+	padding-left:5px;
+	text-align:left;
+}
+
+.question_stats {
+	color:red;
+	background: white;
+	font-size:110%;
+	width:50%;
+	float:right;
+	text-align:right;
+	padding-right: 5px
+}

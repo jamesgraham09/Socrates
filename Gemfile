@@ -39,6 +39,8 @@ gem 'devise'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
+gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'

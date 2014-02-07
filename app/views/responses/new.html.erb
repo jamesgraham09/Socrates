@@ -1,12 +1,57 @@
-<h3>Your question:</h3> 
-<h1><%= @question.text %></h1>
+<div class="row">
+	<div class="col-xs-7">
+		<h1 style="text-align:center;border:solid black 3px"><%= @question.text %></h1>
 
-<%= form_for [@question, @response] do |form| %>
-	<%= form.text_area :answer, value: '', size: '50x10' %>
-	<br>
-	<%= form.submit 'Create Response' %>
-<% end %>
+		<div class="question_info">
+			<a class="seconds">0
+			</a>
+			<a class="question_stats">
+			<%= @question.start_difficulty%> << Difficulty
+			</a>
+		</div>
+
+		<script>
+			var ticker = 0 
+			setInterval(function(){
+				ticker+=1;
+				$('.seconds').text("seconds >>  " + (ticker / 100));
+				}
+			,10);
+		</script>
+
+		<%= form_for [@question, @response] do |form| %>
+			<%= form.text_area :answer, value: '', style: "width:100%;background-color:black;color:red;font-size:200%;text-align:center;vertical-align:middle;border:solid red 3px;padding:10px" %>
+			<br>
+			<%= form.submit 'Submit Answer',style: "background-color:red;font-weight:bold" %>
+		<% end %>
+		<br>
+
+	</div>
+
+
+	<div class="col-xs-5" style="vertical-align:middle">
+		<h5> User: <%= current_user.email%> </h5>
+		<h5> Score: <%= current_user.get_rating %> </h5>
+		<h5> Questions: <%= current_user.correct_answers%> / <%=current_user.questions_answered %> </h5>
+		<h5> Avg speed: HOLD </h5>
+		<h5> Speed Rating: HOLD</h5>
+
+	</div>
+</div>
+<br>
+<div class="row">
+	<div class="col-xs-8">PREVIOUS QUESTION</div>
+	<div class="col-xs-4">USER STATS</div>
+</div>
+
+OTHER STUFF
+
+
+
+
+
+
 
 <br>
 
-<%= link_to 'Skip question', new_response_path(Question.first) %>
+<%= link_to 'Skip question', new_response_path(Question.first) %>					ticker+=1;

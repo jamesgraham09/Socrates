@@ -32,5 +32,17 @@ class User < ActiveRecord::Base
 
   end
 
+  def questions_answered
+    responses.size
+  end
+
+  def correct_answers
+    responses.where(outcome: 'correct').size
+  end
+
+  def median_speed
+    
+  end
+
 
 end	
