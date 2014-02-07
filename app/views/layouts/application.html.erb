@@ -8,10 +8,14 @@
 
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  
-  <p>
+  <div class="row nav_bar">
+	  <div class="col-md-3">Welcome</div>
+	  <div class="col-md-3"><%= link_to 'Next Question', new_response_path, class: "nav_link" %></div>
+	  <div class="col-md-3"><%= link_to 'All Questions', questions_path, class: 'nav_link'%> </div>
+	  <div class="col-md-3">About</div>
+  </div>
+
+<!--   <p>
 	  <% if user_signed_in? %>
 	  	Logged in as: <%=current_user.email%>
 	  	 // 
@@ -22,10 +26,18 @@
 	  	 // 
 	  	<%= link_to 'Sign in', new_user_session_path %>
 	  <% end %>
-  </p>
+  </p> -->
 
 
 <%= yield %>
+
+	<div class="row nav_bar" style="font-style:italic;background: linear-gradient(to right, red, black)">
+	  <div class="col-md-6" style="text-align:center"></div>
+	  <div class="col-md-6" style="text-align:right">copyright Project Socrates 2014</div>
+  </div>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
 </body>
 </html>

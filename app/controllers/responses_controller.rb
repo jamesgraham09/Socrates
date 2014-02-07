@@ -10,6 +10,8 @@ class ResponsesController < ApplicationController
 				Question.where(:start_difficulty => (200..300)).sample
 			end
 		session[:start_time] = Time.now
+		@last_response = current_user.responses.last
+		@last_question = @last_response.question
 	end
 
 	def create
@@ -30,7 +32,7 @@ class ResponsesController < ApplicationController
 			end
 
 		@response.save
-		redirect_to new_response_path
+		redirect_to '/next_question'
 	end
 
 end

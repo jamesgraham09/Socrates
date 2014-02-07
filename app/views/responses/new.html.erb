@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-xs-7">
+	<div class="col-xs-8">
 		<h1 style="text-align:center;border:solid black 3px"><%= @question.text %></h1>
 
 		<div class="question_info">
@@ -20,38 +20,42 @@
 		</script>
 
 		<%= form_for [@question, @response] do |form| %>
-			<%= form.text_area :answer, value: '', style: "width:100%;background-color:black;color:red;font-size:200%;text-align:center;vertical-align:middle;border:solid red 3px;padding:10px" %>
+			<%= form.text_area :answer, value: '', class: 'answer_box'%>
 			<br>
 			<%= form.submit 'Submit Answer',style: "background-color:red;font-weight:bold" %>
 		<% end %>
-		<br>
 
 	</div>
 
 
-	<div class="col-xs-5" style="vertical-align:middle">
+	<div class="col-xs-4" style="vertical-align:middle">
+		<br>
 		<h5> User: <%= current_user.email%> </h5>
 		<h5> Score: <%= current_user.get_rating %> </h5>
-		<h5> Questions: <%= current_user.correct_answers%> / <%=current_user.questions_answered %> </h5>
+		<h5> Accuracy: <%= current_user.correct_answers%> / <%=current_user.questions_answered %> </h5>
 		<h5> Avg speed: HOLD </h5>
 		<h5> Speed Rating: HOLD</h5>
 
 	</div>
 </div>
-<br>
+
 <div class="row">
-	<div class="col-xs-8">PREVIOUS QUESTION</div>
-	<div class="col-xs-4">USER STATS</div>
+	<div class="col-xs-6", style="text-align:center">
+		<h4>Your were <%= @last_response.outcome%></h4>
+		<h5>Question: <%= @last_question.text %> </h5>
+		<h5>Correct answer: <%= @last_question.answer %></h5>
+		<h5>Your time: <%= @last_response.time / 1000%>s</h5>
+	</div>
+	<div class="col-xs-6". style="text-align:center">
+		<h4>Actions</h4>
+		<h5>Query Answer</h5>
+		<h5>Post to twitter</h5>
+		<h5>Post to facebook</h5>
+	</div>
 </div>
 
-OTHER STUFF
 
 
 
 
-
-
-
-<br>
-
-<%= link_to 'Skip question', new_response_path(Question.first) %>					ticker+=1;
+		

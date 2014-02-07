@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   end
   resources :responses
 
-  root :to => "responses#new"
+  root :to => "welcome#index"
+
+  get 'next_question' => "responses#new"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

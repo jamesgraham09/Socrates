@@ -20,6 +20,24 @@ html {
 	max-width: 600px;
 }
 
+.link_to {
+	color:red;
+}
+
+
+.nav_bar {
+	background-color: black;
+	color:red;
+	text-align: center;
+	font-size: 100%;
+	padding: 5px;
+	margin-top: 5px;
+	border: 3px solid red;
+}
+
+.nav_link {
+	color:red;
+}
 .seconds {
 	color:red;
 	background: white;
@@ -41,3 +59,15 @@ html {
 	text-align:right;
 	padding-right: 5px
 }
+
+.answer_box {
+	width:100%;
+	background-color:black;
+	color:red;font-size:200%;
+	text-align:center;
+	vertical-align:middle;
+	border:solid red 3px;
+	padding:10px;
+	height:70px;
+}
+ 
