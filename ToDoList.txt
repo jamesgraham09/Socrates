@@ -1,30 +1,16 @@
 Log of actions to be implemented
 
-- build basic seed for questions database (CREATED LOW GRADE 500)
->> start with trivial seed
->> mess about with difficulty ratings until you get 1,000 decent questions with sensible difficulty ratings
-
-- create question selection logic
->> calculate user rating (CREATE BASIC)
->> calculate question difficulty ratings
->> avoid repeat questions
->> get the best difficulty adjusted questions you can
-
-- change 'responses/new' to 'nextquestion' in url
->> re-label the url's to create sensible routing
-
-- develop template for next question page
->> install bootstrap
->> create the column structure
->> load up the user and question info on page load
->> do fancy stuff later
-
-- make it cooler with javascripty bits
->> rolling clock
->> color change based on right/wrong
+- Improve question bank with 10 'levels' of question
+- Crate a decent difficulty adjustment model for user rating (FIDE copy?)
+- Improve the question scoring model to take into account user questions
+- Implement a proper question selection method, best possible difficulty, non-repeated questions 
+- Add Javascript to site for color change feedback and other interactive elements (ensure right answers are fun!)
+- Maybe replicate for another area (eg French-English)
 
 
 
+
+>>>>>>>>>>
 Lessons learnt by doing this
 
 - devise is freaking impressive, especially always knowing who the user is in a helper method!
