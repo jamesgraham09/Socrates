@@ -1,6 +1,6 @@
 Log of actions to be implemented
 
-- Improve question bank with 10 'levels' of question
+- Improve question bank with 10 'levels' of question ... SORT OUT THE RANDOMNESS / ITERATION PROBLEM
 - Crate a decent difficulty adjustment model for user rating (FIDE copy?)
 - Improve the question scoring model to take into account user questions
 - Implement a proper question selection method, best possible difficulty, non-repeated questions 
