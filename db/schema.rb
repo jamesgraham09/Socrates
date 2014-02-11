@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20140205181955) do
   end
 
   create_table "responses", force: true do |t|
-    t.string   "user_id"
-    t.string   "question_id"
+    t.integer  "user_id"
+    t.integer  "question_id"
     t.string   "outcome"
     t.integer  "time"
     t.datetime "created_at"

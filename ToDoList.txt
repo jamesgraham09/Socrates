@@ -1,12 +1,24 @@
+For alex:
+1) how to sort randomness issue
+2) how to implement my scoring algorithm
+
 Log of actions to be implemented
 
 - Improve question bank with 10 'levels' of question ... SORT OUT THE RANDOMNESS / ITERATION PROBLEM
 - Crate a decent difficulty adjustment model for user rating (FIDE copy?)
 - Improve the question scoring model to take into account user questions
+- add skipping options and make harder options
 - Implement a proper question selection method, best possible difficulty, non-repeated questions 
 - Add Javascript to site for color change feedback and other interactive elements (ensure right answers are fun!)
 - Maybe replicate for another area (eg French-English)
 
+
+extra ideas:
+- Big digital clock
+- Implement time challenges
+- green and red flash for right and wrong
+- Big up the user score
+- make other scores smaller and in columns
 
 
 

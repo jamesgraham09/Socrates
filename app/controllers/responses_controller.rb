@@ -5,10 +5,10 @@ class ResponsesController < ApplicationController
 			@response = Response.new
 			# @question = Question.last
 			@question = 
-				if user_signed_in?
-					Question.where(:start_difficulty => ((current_user.get_rating - 200)..999)).sample
+				if user_signed_in? && current_user.questions.size > 0
+					Question.where("id NOT IN (?)", current_user.questions.map(&:id)).where("start_difficulty > ?", current_user.get_rating).order('start_difficulty').first
 				else 
-					Question.where(:start_difficulty => (200..300)).sample
+					Question.where(:start_difficulty => 1).sample
 				end
 			session[:start_time] = Time.now
 			@last_response = current_user.responses.last

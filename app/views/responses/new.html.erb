@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-xs-7">
-		<h1 style="text-align:center;border:solid black 3px"><%= @question.text %></h1>
+		<h1 style="text-align:center;border:solid black 3px"><%= @question.text.html_safe %></h1>
 
 		<div class="question_info">
 			<a class="seconds">0
@@ -20,7 +20,7 @@
 		</script>
 
 		<%= form_for [@question, @response] do |form| %>
-			<%= form.text_field :answer, value: '', class: 'answer_box', autofocus: true%>
+			<%= form.text_field :answer, value: '', class: 'answer_box', autofocus: true, autocomplete: 'off' %>
 			<br>
 			<%= form.submit 'Submit Answer',style: "background-color:red;font-weight:bold" %>
 		<% end %>
@@ -44,13 +44,16 @@
 
 <% else %>
 	<div class="row">
-		<div class="col-xs-6", style="text-align:center">
+		<div class="col-xs-7", style="text-align:center">
 			<h4>Your were <%= @last_response.outcome%></h4>
-			<h5>Question: <%= @last_question.text %> </h5>
-			<h5>Correct answer: <%= @last_question.answer %></h5>
-			<h5>Your time: <%= @last_response.time / 1000%>s</h5>
+
+			<div class="row" style="text-align:center">
+				<div class="col-xs-4"><h5>Question:</h5><h2><%= @last_question.text.html_safe %> </h2></div>
+				<div class="col-xs-4"><h5>Correct answer:</h5><h2><%= @last_question.answer %></h2></div>
+				<div class="col-xs-4"><h5>Your time:</h5><h2><%= @last_response.time / 1000%>s</h2></div>
+			</div>
 		</div>
-		<div class="col-xs-6". style="text-align:center">
+		<div class="col-xs-5". style="text-align:center">
 			<h4>Actions</h4>
 			<h5>Query Answer</h5>
 			<h5>Post to twitter</h5>
