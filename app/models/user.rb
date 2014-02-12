@@ -45,7 +45,14 @@ class User < ActiveRecord::Base
   # end
 
   def dif_adjust
-    (responses.where(outcome: 'harder').count * USER_ADJUSTMENT) - (responses.where(outcome: 'easier').count * USER_ADJUSTMENT)
+    desired_rating = (responses.where(outcome: 'harder').count * USER_ADJUSTMENT) - (responses.where(outcome: 'easier').count * USER_ADJUSTMENT)
+      if desired_rating > 200
+        return 100
+      elsif desired_rating < -200
+        return -200
+      else
+        return desired_rating
+      end
   end
 
   def get_rating_old

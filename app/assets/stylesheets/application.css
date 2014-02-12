@@ -84,7 +84,17 @@ a {
 	color: white;
 }
 
-.incorrect h2, .incorrect h5 {
+.correct h1 {
+	color:green;
+	border:solid green 3px;
+}
+
+.incorrect h2, .incorrect h5{
 	background-color: red;
 	color: white;
+}
+
+.incorrect h1 {
+	color:red;
+	border:solid red 3px;
 }

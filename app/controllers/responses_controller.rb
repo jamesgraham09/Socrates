@@ -34,13 +34,13 @@ class ResponsesController < ApplicationController
 		@response.time = (1000*(end_time - start_time)).to_i
 
 		@response.outcome =
-			if params[:commit] == "Make it easier"
-				'easier'
-			elsif params[:commit] == "Make it harder"
-				'harder'
-			elsif params[:response][:answer] == @question.answer
+			# if params[:commit] == "Make it easier"
+			# 	'easier'
+			# elsif params[:commit] == "Make it harder"
+			# 	'harder'
+			if params[:response][:answer] == @question.answer
 				'correct'
-			elsif 
+			else
 				'incorrect'
 			end
 
