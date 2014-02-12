@@ -74,3 +74,17 @@ a {
 	height:70px;
 }
  
+ .response_button {
+ 	background-color:red;
+ 	font-weight:bold
+ }
+
+.correct h2, .correct h5 {
+	background-color: green;
+	color: white;
+}
+
+.incorrect h2, .incorrect h5 {
+	background-color: red;
+	color: white;
+}

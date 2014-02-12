@@ -6,7 +6,7 @@ class ResponsesController < ApplicationController
 			# @question = Question.last
 			@question = 
 				if user_signed_in? && current_user.questions.size > 0
-					Question.where("id NOT IN (?)", current_user.questions.map(&:id)).where("start_difficulty > ?", current_user.get_rating).order('start_difficulty').first
+					Question.where("id NOT IN (?)", current_user.questions.map(&:id)).where("start_difficulty > ?", current_user.get_rating + current_user.dif_adjust).order('start_difficulty').first
 				else 
 					Question.where(:start_difficulty => 1).sample
 				end
@@ -33,10 +33,14 @@ class ResponsesController < ApplicationController
 		
 		@response.time = (1000*(end_time - start_time)).to_i
 
-		@response.outcome = 
-			if params[:response][:answer] == @question.answer
+		@response.outcome =
+			if params[:commit] == "Make it easier"
+				'easier'
+			elsif params[:commit] == "Make it harder"
+				'harder'
+			elsif params[:response][:answer] == @question.answer
 				'correct'
-			else 
+			elsif 
 				'incorrect'
 			end
 

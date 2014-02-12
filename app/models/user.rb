@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :questions, through: :responses
 
   RECENT = 20
+  USER_ADJUSTMENT = 50
   DELTA = 500
 
 
@@ -26,7 +27,6 @@ class User < ActiveRecord::Base
     calculated_rating = (difficulties.inject{ |sum, el| sum + el }.to_f +	DELTA * (outcomes.count('correct') - outcomes.count('incorrect'))) / outcomes.size
 
     calculated_rating * (outcomes.size.to_f / RECENT.to_f)
-
   end 
 
 
@@ -44,6 +44,9 @@ class User < ActiveRecord::Base
   #   end
   # end
 
+  def dif_adjust
+    (responses.where(outcome: 'harder').count * USER_ADJUSTMENT) - (responses.where(outcome: 'easier').count * USER_ADJUSTMENT)
+  end
 
   def get_rating_old
   	correct_difficulties = []
