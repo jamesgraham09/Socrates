@@ -8,8 +8,13 @@ class User < ActiveRecord::Base
   has_many :questions, through: :responses
 
   RECENT = 15
-   DELTA = 333
-  USER_ADJUSTMENT = 50
+  # This field sets the number of questions considered in calculating the rating (ie if it's 20, last 20 questions count)
+
+  DELTA = 333
+  # This field sets the speed at which users will be able to move up / down ratings
+
+  LAST_Q_ADJUSTMENT = 20
+  # This adjustment ensures that questions get a bit easier after a wrong answer and harder after and easy one
  
 
 
@@ -32,14 +37,13 @@ class User < ActiveRecord::Base
 
 
   def dif_adjust
-    desired_rating = (responses.where(outcome: 'harder').count * USER_ADJUSTMENT) - (responses.where(outcome: 'easier').count * USER_ADJUSTMENT)
-      if desired_rating > 200
-        return 100
-      elsif desired_rating < -200
-        return -200
-      else
-        return desired_rating
-      end
+    if responses.last.outcome == nil
+      0
+    elsif responses.last.outcome == 'correct'
+      LAST_Q_ADJUSTMENT
+    elsif responses.last.outcome == 'incorrect'
+      (-1 * LAST_Q_ADJUSTMENT)
+    end
   end
 
   def average_speed

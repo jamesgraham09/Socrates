@@ -12,6 +12,7 @@ class ResponsesController < ApplicationController
 				end
 			session[:start_time] = Time.now
 			@previous_score = session[:previous_score]
+			@running_time = session[:running_time]
 			@last_answer = session[:last_answer]
 			@last_response = current_user.responses.last
 			@last_question = 
@@ -36,6 +37,8 @@ class ResponsesController < ApplicationController
 		@response.question_id = @question.id
 		
 		@response.time = (1000*(end_time - start_time)).to_i
+		
+		session[:running_time] = @response.time + session[:running_time]
 
 		@response.outcome =
 			# if params[:commit] == "Make it easier"
