@@ -38,26 +38,18 @@
 	<div class="col-xs-5" style="vertical-align:middle;text-align:center">
 		<br>
 		<div class="row">
-			<div class="col-xs-6">
-				<h5> User: <%= current_user.email%> </h5>
-				<h5> Accuracy: <%= current_user.correct_answers%> / <%=current_user.questions_answered %> </h5>
+			<div class="col-xs-4">
+				<h5> User:<br><%= current_user.email%> </h5>
 			</div>
-			<div class="col-xs-6">
-				<h5> Score: <%= current_user.get_rating %> </h5>
-				<h5> Score: <%= current_user.get_rating %> </h5>
+			<div class="col-xs-4">
+				<h5> Accuracy:<br><%= current_user.correct_answers%> / <%=current_user.questions_answered %> </h5>
+			</div>
+			<div class="col-xs-4">
+				<h5> Avg Speed:<br><%= number_with_precision(current_user.average_speed / 1000, precision: 2)%>s </h5>
 			</div>
 		</div>
 
-		<h1 style="text-align:center"> Score: <%= current_user.get_rating %> </h1>
-
-		<div class="row" style="text-align:center">
-			<div class="col-xs-6">
-				
-			</div>
-			<div class="col-xs-6">
-				
-			</div>
-		</div>
+		<h1 style="text-align:center"> Score: <%= current_user.get_rating.to_i %> </h1>
 
 	</div>
 </div>
@@ -79,7 +71,7 @@
 				<div class="row" id="last_response" style="text-align:center">
 					<div class="col-xs-4"><h5>Question:</h5><h2><%= @last_question.text.html_safe %> </h2></div>
 					<div class="col-xs-4"><h5>Correct answer:</h5><h2><%= @last_question.answer %></h2></div>
-					<div class="col-xs-4"><h5>Your time:</h5><h2><%= @last_response.time / 1000%>s</h2></div>
+					<div class="col-xs-4"><h5>Your time:</h5><h2><%= number_with_precision(@last_response.time / 1000, precision: 2)%>s</h2></div>
 				</div>
 			</div>
 		</div>

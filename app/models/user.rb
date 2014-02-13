@@ -30,20 +30,6 @@ class User < ActiveRecord::Base
   end 
 
 
-# The @recent thing doesnt work? How should I use instance variables in here
-# I'm not sure how to write the loop?
-# Where are rails helpers valid / invalid?
-# How do I write the loop
-
-  #      = responses.last(@recent)
-
-  #     (relevant_responses.question.start_difficulty.inject{ |sum, el| sum + el }.to_f
-  #     + 
-  #     @recent * @delta_factor)
-
-  #   end
-  # end
-
   def dif_adjust
     desired_rating = (responses.where(outcome: 'harder').count * USER_ADJUSTMENT) - (responses.where(outcome: 'easier').count * USER_ADJUSTMENT)
       if desired_rating > 200
@@ -54,6 +40,15 @@ class User < ActiveRecord::Base
         return desired_rating
       end
   end
+
+  def average_speed
+    times = []
+    responses.where(outcome: ['correct','incorrect']).last(RECENT).each do |response|
+      times << response.time
+    end
+    times.inject{ |sum, el| sum + el }.to_f / times.size
+  end
+
 
   def get_rating_old
   	correct_difficulties = []
@@ -76,7 +71,6 @@ class User < ActiveRecord::Base
 	  	return 200 if correct_difficulties.none?
 	  	correct_difficulties.inject{ |sum, el| sum + el }.to_f / correct_difficulties.size
 	  end
-
   end
 
   def questions_answered
