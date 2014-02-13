@@ -11,6 +11,7 @@ class ResponsesController < ApplicationController
 					Question.where(:start_difficulty => 1).sample
 				end
 			session[:start_time] = Time.now
+			@previous_score = session[:previous_score]
 			@last_response = current_user.responses.last
 			@last_question = 
 				if @last_response == nil
@@ -26,6 +27,7 @@ class ResponsesController < ApplicationController
 	def create
 		@question = Question.find(params[:question_id])
 		start_time = session[:start_time]
+		session[:previous_score] = current_user.get_rating
 		end_time = Time.now
 		@response = Response.new
 		@response.user_id = current_user.id

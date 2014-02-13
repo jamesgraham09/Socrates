@@ -1,12 +1,10 @@
 <div class="row">
-	<div class="col-xs-7">
+	<div class="col-xs-10">
 		<h1 style="text-align:center;border:solid black 3px"><%= @question.text.html_safe %></h1>
 
 		<div class="question_info">
 			<a class="seconds">0
 			</a>
-			<a class="question_stats">
-			<%= @question.start_difficulty%> << Difficulty
 			</a>
 		</div>
 
@@ -14,7 +12,7 @@
 			var ticker = 0 
 			setInterval(function(){
 				ticker+=1;
-				$('.seconds').text("seconds >>  " + (ticker / 100));
+				$('.seconds').text("secs >>  " + (ticker / 100));
 				}
 			,10);
 		</script>
@@ -35,21 +33,14 @@
 	</div>
 
 
-	<div class="col-xs-5" style="vertical-align:middle;text-align:center">
+	<div class="col-xs-2" style="vertical-align:middle;text-align:center">
 		<br>
 		<div class="row">
-			<div class="col-xs-4">
-				<h5> User:<br><%= current_user.email%> </h5>
-			</div>
-			<div class="col-xs-4">
-				<h5> Accuracy:<br><%= current_user.correct_answers%> / <%=current_user.questions_answered %> </h5>
-			</div>
-			<div class="col-xs-4">
-				<h5> Avg Speed:<br><%= number_with_precision(current_user.average_speed / 1000, precision: 2)%>s </h5>
-			</div>
-		</div>
 
-		<h1 style="text-align:center"> Score: <%= current_user.get_rating.to_i %> </h1>
+		</div>
+		<h4>Score:</h4>
+		<h1><%= current_user.get_rating.to_i %> </h1>
+		<h3><% if @last_response == nil %> no change <% else %>(<%= (current_user.get_rating - @previous_score).to_i%>) <% end %></h3>
 
 	</div>
 </div>
@@ -65,22 +56,23 @@
 	
 	<div class="row">
 		
-		<div class="col-xs-7", style="text-align:center">
+		<div class="col-xs-10", style="text-align:center">
 			<div id="last_response">
 				<h1 id="previousOutcome" onchange="checkOutcome();"><%= @last_response.outcome.upcase%></h1>
 				<div class="row" id="last_response" style="text-align:center">
 					<div class="col-xs-4"><h5>Question:</h5><h2><%= @last_question.text.html_safe %> </h2></div>
 					<div class="col-xs-4"><h5>Correct answer:</h5><h2><%= @last_question.answer %></h2></div>
-					<div class="col-xs-4"><h5>Your time:</h5><h2><%= number_with_precision(@last_response.time / 1000, precision: 2)%>s</h2></div>
+					<div class="col-xs-4"><h5>Your time:</h5><h2><%= number_with_precision(@last_response.time.to_f / 1000, precision: 2)%>s</h2></div>
 				</div>
 			</div>
 		</div>
 
-		<div class="col-xs-5". style="text-align:center">
-			<h4>Actions</h4>
-			<h5>Query Answer</h5>
-			<h5>Post to twitter</h5>
-			<h5>Post to facebook</h5>
+		<div class="col-xs-2". style="text-align:center">
+				<h5>Stats:</h5>
+				<h5> User:<br><%= current_user.email%> </h5>
+				<h5> Accuracy:<br><%= current_user.correct_answers%> / <%=current_user.questions_answered %> </h5>
+				<h5> Avg Speed:<br><%= number_with_precision(current_user.average_speed / 1000, precision: 2)%>s </h5>
+			</div>
 		</div>
 	</div>
 <% end %>
