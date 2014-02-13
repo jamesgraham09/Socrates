@@ -7,9 +7,9 @@ class User < ActiveRecord::Base
   has_many :responses
   has_many :questions, through: :responses
 
-  RECENT = 20
+  RECENT = 15
   USER_ADJUSTMENT = 50
-  DELTA = 500
+  DELTA = 333
 
 
   def get_rating
