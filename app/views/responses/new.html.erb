@@ -40,7 +40,7 @@
 		</div>
 		<h4>Score:</h4>
 		<h1><%= current_user.get_rating.to_i %> </h1>
-		<h3><% if @last_response == nil %> no change <% else %>(<%= (current_user.get_rating - @previous_score).to_i%>) <% end %></h3>
+		<h3><% if @last_response == nil %> no change <% else %><%= change_direction(current_user.get_rating - @previous_score)%> <% end %></h3>
 
 	</div>
 </div>
