@@ -60,9 +60,10 @@
 			<div id="last_response">
 				<h1 id="previousOutcome" onchange="checkOutcome();"><%= @last_response.outcome.upcase%></h1>
 				<div class="row" id="last_response" style="text-align:center">
-					<div class="col-xs-4"><h5>Question:</h5><h2><%= @last_question.text.html_safe %> </h2></div>
-					<div class="col-xs-4"><h5>Correct answer:</h5><h2><%= @last_question.answer %></h2></div>
-					<div class="col-xs-4"><h5>Your time:</h5><h2><%= number_with_precision(@last_response.time.to_f / 1000, precision: 2)%>s</h2></div>
+					<div class="col-xs-3"><h5>Question:</h5><h2><%= @last_question.text.html_safe %> </h2></div>
+					<div class="col-xs-3"><h5>Correct Answer:</h5><h2><%= @last_question.answer %></h2></div>					
+					<div class="col-xs-3"><h5>Your Answer:</h5><h2><%= show_last_answer(@last_answer) %></h2></div>
+					<div class="col-xs-3"><h5>Your time:</h5><h2><%= number_with_precision(@last_response.time.to_f / 1000, precision: 2)%>s</h2></div>
 				</div>
 			</div>
 		</div>

@@ -6,4 +6,12 @@ module ResponsesHelper
 			rating_change.to_i
 		end
 	end
+
+	def show_last_answer(last_answer)
+		if last_answer == ""
+			"???"
+		else
+			last_answer
+		end
+	end
 end

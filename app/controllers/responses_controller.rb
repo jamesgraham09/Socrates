@@ -12,6 +12,7 @@ class ResponsesController < ApplicationController
 				end
 			session[:start_time] = Time.now
 			@previous_score = session[:previous_score]
+			@last_answer = session[:last_answer]
 			@last_response = current_user.responses.last
 			@last_question = 
 				if @last_response == nil
@@ -27,6 +28,7 @@ class ResponsesController < ApplicationController
 	def create
 		@question = Question.find(params[:question_id])
 		start_time = session[:start_time]
+		session[:last_answer] = params[:response][:answer]
 		session[:previous_score] = current_user.get_rating
 		end_time = Time.now
 		@response = Response.new

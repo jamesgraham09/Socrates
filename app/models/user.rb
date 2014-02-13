@@ -8,8 +8,9 @@ class User < ActiveRecord::Base
   has_many :questions, through: :responses
 
   RECENT = 15
+   DELTA = 333
   USER_ADJUSTMENT = 50
-  DELTA = 333
+ 
 
 
   def get_rating
