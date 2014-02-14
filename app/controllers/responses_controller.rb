@@ -38,6 +38,7 @@ class ResponsesController < ApplicationController
 		
 		@response.time = (1000*(end_time - start_time)).to_i
 		
+		session[:running_time] ||= 0
 		session[:running_time] = @response.time + session[:running_time]
 
 		@response.outcome =
